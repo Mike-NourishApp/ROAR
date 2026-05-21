@@ -105,29 +105,50 @@ const classes = [
 
 const coaches = [
   {
-    name: "Lawrence Cartwright",
+    name: "Lawrence",
     role: "Founder & Head Coach",
-    bio: "Founder of Roar and one of Singapore's top Hyrox athletes. Specialising in performance training, hybrid fitness, strength and conditioning.",
+    image: "/coaches/lawrence.webp",
+    bio: "One of Singapore's most in-demand personal trainers and a lifelong competitive athlete. Award-winning boxer, rugby player and MMA fighter turned full-time coach in 2012. Co-founded BBL with a mission to empower personal transformation.",
     achievements: [
       "Singapore Hyrox Champion",
       "Hyrox World Championship competitor",
-      "Coach to high-performing professionals and athletes",
+      "Award-winning boxer, rugby player & MMA fighter",
+      "Coached hundreds of clients since 2012",
     ],
   },
   {
-    name: "Coach TBA",
-    role: "Strength Coach",
-    bio: "Specialising in strength training, fat loss and beginner transformation.",
-    specialities: ["Strength training", "Fat loss", "Beginner transformation"],
+    name: "Harry",
+    role: "Personal Trainer",
+    image: "/coaches/harry.webp",
+    bio: "Former Royal Marine with nearly 9 years of military experience including counter-piracy operations and special forces activities. Specialises in pushing clients beyond their limits with structured, results-driven programming.",
+    achievements: [
+      "Physical Training Medal — Royal Marines",
+      "Tarzan Assault Course record holder",
+      "Man of Steel Award — Marines Rugby League",
+      "Competed in rugby, bobsleigh, powerlifting & strongman",
+    ],
   },
   {
-    name: "Coach TBA",
-    role: "Conditioning Coach",
-    bio: "Specialising in conditioning, athletic development and mobility.",
+    name: "Marcus",
+    role: "Personal Trainer",
+    image: "/coaches/marcus.webp",
+    bio: "Driven by a passion to help clients become stronger, happier and more confident. Dedicated to providing tailored workouts and expert guidance whether the goal is fat loss, muscle building or overall fitness improvement.",
     specialities: [
-      "Conditioning",
-      "Athletic development",
-      "Mobility & movement",
+      "Tailored workout programming",
+      "Fat loss & muscle building",
+      "Bootcamp & group training",
+    ],
+  },
+  {
+    name: "Dana",
+    role: "Personal Trainer",
+    image: "/coaches/dana.webp",
+    bio: "Pro-level Hyrox competitor and strength & performance coach. As a mother of two, Dana specialises in post-pregnancy strength reconstruction and helping clients balance fitness with demanding schedules.",
+    specialities: [
+      "Hyrox competition training",
+      "Strength & performance coaching",
+      "Post-pregnancy fitness",
+      "Fat loss programming",
     ],
   },
 ];
@@ -222,9 +243,9 @@ export default function Home() {
               title="Your Coaches"
               description="Experienced coaches dedicated to helping you train smarter and perform better."
             />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {coaches.map((coach, i) => (
-                <CoachCard key={`${coach.name}-${i}`} {...coach} />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {coaches.map((coach) => (
+                <CoachCard key={coach.name} {...coach} />
               ))}
             </div>
           </div>
