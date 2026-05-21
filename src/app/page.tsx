@@ -1,6 +1,7 @@
 import { Dumbbell, Zap, Timer, CreditCard } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import { WhatsAppWidget } from "@/components/whatsapp-widget";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { ClassCard } from "@/components/class-card";
@@ -296,6 +297,7 @@ export default function Home() {
         <CtaSection />
       </main>
       <Footer />
+      <WhatsAppWidget />
     </>
   );
 }

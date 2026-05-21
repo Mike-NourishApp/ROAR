@@ -32,7 +32,7 @@ export function CtaSection() {
             Book Your First Class
           </a>
           <a
-            href="https://wa.me/"
+            href="https://api.whatsapp.com/send/?phone=6586062819&text=Hey+I%27m+interested+in+ROAR%2C+can+you+give+me+some+more+info%3F&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(

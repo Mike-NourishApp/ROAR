@@ -25,7 +25,7 @@ export function Footer() {
               <span className="sr-only">Instagram</span>
             </a>
             <a
-              href="https://wa.me/"
+              href="https://api.whatsapp.com/send/?phone=6586062819&text=Hey+I%27m+interested+in+ROAR%2C+can+you+give+me+some+more+info%3F&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-white/20 hover:text-white"
