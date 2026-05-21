@@ -6,17 +6,19 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ label, title, description }: SectionHeadingProps) {
   return (
-    <div className="mb-12 text-center lg:mb-16">
+    <div className="mb-16 text-center">
       {label && (
-        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-roar">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-white/40">
           {label}
         </p>
       )}
-      <h2 className="mb-4 text-3xl font-black uppercase tracking-tight sm:text-4xl lg:text-5xl">
+      <h2 className="mb-4 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description && (
-        <p className="mx-auto max-w-2xl text-muted-foreground">{description}</p>
+        <p className="mx-auto max-w-xl text-sm leading-relaxed text-white/50">
+          {description}
+        </p>
       )}
     </div>
   );

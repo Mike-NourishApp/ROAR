@@ -1,4 +1,4 @@
-import { Dumbbell, Zap, Timer, CreditCard, CheckCircle } from "lucide-react";
+import { Dumbbell, Zap, Timer, CreditCard } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { SectionHeading } from "@/components/section-heading";
@@ -38,7 +38,7 @@ const services = [
   },
   {
     icon: Timer,
-    title: "Conditioning & Hyrox Classes",
+    title: "Conditioning & Hyrox",
     description:
       "High-energy sessions designed to improve endurance, fitness and race performance in a motivating group environment.",
     items: [
@@ -145,7 +145,7 @@ const memberships = [
     featured: true,
   },
   {
-    title: "Open Gym Membership",
+    title: "Open Gym",
     description:
       "Access to the ROAR training floor during open gym hours. Perfect for experienced lifters with their own programming.",
   },
@@ -186,7 +186,7 @@ export default function Home() {
               title="Services"
               description="Everything you need to train smarter, get stronger and perform at your best."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => (
                 <ServiceCard key={service.title} {...service} />
               ))}
@@ -194,7 +194,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Banner */}
+        {/* CTA */}
         <CtaSection />
 
         {/* Classes */}
@@ -205,7 +205,7 @@ export default function Home() {
               title="Our Classes"
               description="Clear programming, expert coaching, real results. Here's what to expect."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {classes.map((cls) => (
                 <ClassCard key={cls.title} {...cls} />
               ))}
@@ -214,14 +214,15 @@ export default function Home() {
         </section>
 
         {/* Team */}
-        <section id="team" className="bg-muted/50 py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="team" className="relative py-24 sm:py-32">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
               label="Meet the Team"
               title="Your Coaches"
               description="Experienced coaches dedicated to helping you train smarter and perform better."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {coaches.map((coach, i) => (
                 <CoachCard key={`${coach.name}-${i}`} {...coach} />
               ))}
@@ -238,11 +239,14 @@ export default function Home() {
               description="More than a gym. A performance-focused community built for results."
             />
             <div className="mx-auto max-w-2xl">
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2">
                 {whyRoar.map((item) => (
-                  <div key={item} className="flex items-center gap-3 rounded-lg border border-border/50 bg-card p-4">
-                    <CheckCircle className="h-5 w-5 shrink-0 text-roar" />
-                    <span className="font-medium">{item}</span>
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-white/10"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                    <span className="text-sm font-medium text-white/70">{item}</span>
                   </div>
                 ))}
               </div>
@@ -251,14 +255,15 @@ export default function Home() {
         </section>
 
         {/* Memberships */}
-        <section id="memberships" className="bg-muted/50 py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="memberships" className="relative py-24 sm:py-32">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
               label="Membership Options"
               title="Join ROAR"
               description="Flexible options to fit your training style and goals."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {memberships.map((m) => (
                 <MembershipCard key={m.title} {...m} />
               ))}

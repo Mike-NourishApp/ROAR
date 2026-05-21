@@ -1,5 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
-
 interface CoachCardProps {
   name: string;
   role: string;
@@ -10,28 +8,28 @@ interface CoachCardProps {
 
 export function CoachCard({ name, role, bio, specialities, achievements }: CoachCardProps) {
   return (
-    <Card className="overflow-hidden border-border/50 bg-card transition-shadow hover:shadow-lg">
-      <div className="aspect-[4/5] bg-muted flex items-center justify-center">
-        <div className="text-center text-muted-foreground">
-          <div className="mx-auto mb-2 flex h-20 w-20 items-center justify-center rounded-full bg-roar/10 text-3xl font-black text-roar">
+    <div className="rounded-lg border border-white/5 bg-white/[0.02] overflow-hidden transition-all hover:border-white/10 hover:bg-white/[0.04]">
+      <div className="aspect-[4/5] bg-white/[0.03] flex items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-full border border-white/10 text-3xl font-black text-white/30">
             {name.charAt(0)}
           </div>
-          <p className="text-xs">Photo coming soon</p>
+          <p className="text-[10px] uppercase tracking-wider text-white/20">Photo coming soon</p>
         </div>
       </div>
-      <CardContent className="p-6">
-        <h3 className="text-lg font-bold">{name}</h3>
-        <p className="mb-3 text-sm font-medium text-roar">{role}</p>
-        <p className="mb-4 text-sm text-muted-foreground">{bio}</p>
+      <div className="p-6">
+        <h3 className="text-lg font-bold text-white">{name}</h3>
+        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-white/40">{role}</p>
+        <p className="mb-4 text-sm leading-relaxed text-white/50">{bio}</p>
         {achievements && achievements.length > 0 && (
-          <div className="mb-3">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="mb-4">
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
               Achievements
             </p>
-            <ul className="space-y-1">
+            <ul className="space-y-1.5">
               {achievements.map((a) => (
-                <li key={a} className="flex items-start gap-2 text-sm">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-roar" />
+                <li key={a} className="flex items-center gap-2.5 text-sm text-white/60">
+                  <span className="h-px w-3 bg-white/20" />
                   {a}
                 </li>
               ))}
@@ -40,20 +38,20 @@ export function CoachCard({ name, role, bio, specialities, achievements }: Coach
         )}
         {specialities && specialities.length > 0 && (
           <div>
-            <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
               Specialises in
             </p>
-            <ul className="space-y-1">
+            <ul className="space-y-1.5">
               {specialities.map((s) => (
-                <li key={s} className="flex items-start gap-2 text-sm">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-roar" />
+                <li key={s} className="flex items-center gap-2.5 text-sm text-white/60">
+                  <span className="h-px w-3 bg-white/20" />
                   {s}
                 </li>
               ))}
             </ul>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

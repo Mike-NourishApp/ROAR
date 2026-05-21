@@ -19,9 +19,9 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
+    <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-2xl font-black tracking-widest">
+        <Link href="/" className="text-2xl font-black tracking-[0.2em] text-white">
           ROAR
         </Link>
 
@@ -30,7 +30,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-xs font-medium uppercase tracking-wider text-white/50 transition-colors hover:text-white"
             >
               {link.label}
             </a>
@@ -39,7 +39,7 @@ export function Navbar() {
             href="#cta"
             className={cn(
               buttonVariants(),
-              "bg-roar text-roar-foreground hover:bg-roar/90"
+              "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider px-6"
             )}
           >
             Book a Class
@@ -51,17 +51,17 @@ export function Navbar() {
             className="md:hidden"
             render={<Button variant="ghost" size="icon" />}
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-5 w-5 text-white" />
             <span className="sr-only">Open menu</span>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72">
+          <SheetContent side="right" className="w-72 bg-[oklch(0.08_0_0)] border-white/5">
             <nav className="mt-8 flex flex-col gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-lg font-medium text-foreground"
+                  className="text-sm font-medium uppercase tracking-wider text-white/70 hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -71,7 +71,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   buttonVariants(),
-                  "bg-roar text-roar-foreground hover:bg-roar/90"
+                  "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider"
                 )}
               >
                 Book a Class

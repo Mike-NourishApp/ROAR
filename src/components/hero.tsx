@@ -1,30 +1,44 @@
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-primary text-primary-foreground">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-roar/20 via-transparent to-transparent" />
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <Image
+        src="/gym-hero.jpg"
+        alt="ROAR Gym Interior"
+        fill
+        className="object-cover"
+        priority
+        quality={90}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+      {/* Bottom gradient fade */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
+
       <div className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center sm:px-6 lg:px-8">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-roar">
-          Strength. Conditioning. Performance.
+        <p className="mb-6 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
+          Strength &mdash; Conditioning &mdash; Performance
         </p>
-        <h1 className="mb-6 text-5xl font-black uppercase leading-tight tracking-tight sm:text-7xl lg:text-8xl">
+        <h1 className="mb-8 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-8xl lg:text-9xl">
           ROAR
         </h1>
-        <p className="mx-auto mb-4 max-w-2xl text-lg text-primary-foreground/80 sm:text-xl">
+        <p className="mx-auto mb-3 max-w-2xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
           Singapore&apos;s performance-focused training space combining elite coaching,
           strength training, Hyrox conditioning and community.
         </p>
-        <p className="mb-10 text-lg font-medium text-primary-foreground/60 italic">
-          Train with purpose. Train with a team. Train at Roar.
+        <p className="mb-12 text-sm font-medium uppercase tracking-[0.15em] text-white/40">
+          Leave life&apos;s BS at the door.
         </p>
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#cta"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "bg-roar text-roar-foreground hover:bg-roar/90 text-base px-8"
+              "bg-white text-black hover:bg-white/90 text-sm font-semibold uppercase tracking-wider px-10 h-12"
             )}
           >
             Book a Class
@@ -33,7 +47,7 @@ export function Hero() {
             href="#cta"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8"
+              "border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
             )}
           >
             Enquire About PT
@@ -42,7 +56,7 @@ export function Hero() {
             href="#memberships"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8"
+              "border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
             )}
           >
             Become a Member

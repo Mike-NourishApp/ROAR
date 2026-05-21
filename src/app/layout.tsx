@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ROAR | Strength. Conditioning. Performance. | Singapore",
   description:
-    "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community. Train with purpose. Train with a team. Train at Roar.",
+    "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community. Leave life's BS at the door.",
   keywords: [
     "gym Singapore",
     "Hyrox Singapore",
@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

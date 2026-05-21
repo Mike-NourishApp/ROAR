@@ -5,27 +5,30 @@ import { InstagramIcon } from "@/components/icons";
 
 export function CtaSection() {
   return (
-    <section id="cta" className="bg-primary text-primary-foreground py-24 sm:py-32">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-roar">
+    <section id="cta" className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-white/[0.04] to-white/[0.02]" />
+
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-white/40">
           Ready to Train?
         </p>
-        <h2 className="mb-4 text-3xl font-black uppercase tracking-tight sm:text-4xl lg:text-5xl">
+        <h2 className="mb-4 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl lg:text-5xl">
           Join the Roar Community
         </h2>
-        <p className="mx-auto mb-10 max-w-xl text-primary-foreground/70">
+        <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-white/50">
           Start building strength, fitness and performance. Book your first class,
           enquire about memberships or speak to a coach today.
         </p>
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#cta"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "bg-roar text-roar-foreground hover:bg-roar/90 text-base px-8 gap-2"
+              "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
             )}
           >
-            <CalendarCheck className="h-5 w-5" />
+            <CalendarCheck className="h-4 w-4" />
             Book Your First Class
           </a>
           <a
@@ -34,10 +37,10 @@ export function CtaSection() {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 gap-2"
+              "border-white/15 text-white/70 hover:bg-white/5 hover:text-white text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
             )}
           >
-            <MessageCircle className="h-5 w-5" />
+            <MessageCircle className="h-4 w-4" />
             WhatsApp Us
           </a>
           <a
@@ -46,10 +49,10 @@ export function CtaSection() {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 gap-2"
+              "border-white/15 text-white/70 hover:bg-white/5 hover:text-white text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
             )}
           >
-            <InstagramIcon className="h-5 w-5" />
+            <InstagramIcon className="h-4 w-4" />
             DM on Instagram
           </a>
         </div>

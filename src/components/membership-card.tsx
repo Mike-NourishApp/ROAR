@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -10,32 +9,33 @@ interface MembershipCardProps {
 
 export function MembershipCard({ title, description, featured }: MembershipCardProps) {
   return (
-    <Card
-      className={`border-border/50 transition-shadow hover:shadow-lg ${
-        featured ? "border-roar/50 ring-1 ring-roar/20" : ""
-      }`}
+    <div
+      className={cn(
+        "rounded-lg border p-6 transition-all",
+        featured
+          ? "border-white/20 bg-white/[0.05]"
+          : "border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]"
+      )}
     >
-      <CardHeader>
-        {featured && (
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-roar">
-            Most Popular
-          </p>
+      {featured && (
+        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/50">
+          Most Popular
+        </p>
+      )}
+      <h3 className="mb-2 text-lg font-bold text-white">{title}</h3>
+      <p className="mb-6 text-sm leading-relaxed text-white/40">{description}</p>
+      <a
+        href="#cta"
+        className={cn(
+          buttonVariants({ variant: featured ? "default" : "outline" }),
+          "w-full text-xs font-semibold uppercase tracking-wider",
+          featured
+            ? "bg-white text-black hover:bg-white/90"
+            : "border-white/10 text-white/60 hover:bg-white/5 hover:text-white"
         )}
-        <CardTitle className="text-lg font-bold">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">{description}</p>
-        <a
-          href="#cta"
-          className={cn(
-            buttonVariants({ variant: featured ? "default" : "outline" }),
-            "w-full",
-            featured ? "bg-roar text-roar-foreground hover:bg-roar/90" : ""
-          )}
-        >
-          Enquire Now
-        </a>
-      </CardContent>
-    </Card>
+      >
+        Enquire Now
+      </a>
+    </div>
   );
 }

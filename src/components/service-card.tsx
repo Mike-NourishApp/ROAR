@@ -1,5 +1,4 @@
 import type { LucideIcon } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -10,24 +9,22 @@ interface ServiceCardProps {
 
 export function ServiceCard({ icon: Icon, title, description, items }: ServiceCardProps) {
   return (
-    <Card className="border-border/50 bg-card transition-shadow hover:shadow-lg">
-      <CardHeader>
-        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-roar/10">
-          <Icon className="h-6 w-6 text-roar" />
-        </div>
-        <CardTitle className="text-xl font-bold uppercase tracking-tight">{title}</CardTitle>
-        <p className="text-sm text-muted-foreground">{description}</p>
-      </CardHeader>
-      <CardContent>
-        <ul className="space-y-2">
-          {items.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm">
-              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-roar" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-    </Card>
+    <div className="group rounded-lg border border-white/5 bg-white/[0.02] p-6 transition-all hover:border-white/10 hover:bg-white/[0.04]">
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-white/5">
+        <Icon className="h-5 w-5 text-white/70" />
+      </div>
+      <h3 className="mb-2 text-lg font-bold uppercase tracking-tight text-white">
+        {title}
+      </h3>
+      <p className="mb-5 text-sm leading-relaxed text-white/40">{description}</p>
+      <ul className="space-y-2">
+        {items.map((item) => (
+          <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
+            <span className="h-px w-3 bg-white/20" />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
