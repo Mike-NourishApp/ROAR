@@ -44,7 +44,7 @@ export function Hero() {
             Book a Class
           </a>
           <a
-            href="#cta"
+            href="#team"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
