@@ -64,7 +64,7 @@ export function Hero() {
             href="#timetable"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "bg-white text-black hover:bg-white/90 text-sm font-semibold uppercase tracking-wider px-10 h-12"
+              "hidden sm:inline-flex bg-white text-black hover:bg-white/90 text-sm font-semibold uppercase tracking-wider px-10 h-12"
             )}
           >
             Book a Class
@@ -73,7 +73,7 @@ export function Hero() {
             href="#team"
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
-              "border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
+              "hidden sm:inline-flex border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
             )}
           >
             Enquire About PT
@@ -81,8 +81,9 @@ export function Hero() {
           <a
             href="#memberships"
             className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "border-white/20 text-white hover:bg-white/10 text-sm font-semibold uppercase tracking-wider px-10 h-12"
+              buttonVariants({ size: "lg" }),
+              "bg-white text-black hover:bg-white/90 text-sm font-semibold uppercase tracking-wider px-10 h-12",
+              "sm:bg-transparent sm:text-white sm:border sm:border-white/20 sm:hover:bg-white/10 sm:hover:text-white"
             )}
           >
             Become a Member
