@@ -40,9 +40,15 @@ export function Hero() {
         ref={contentRef}
         className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center will-change-transform sm:px-6 lg:px-8"
       >
-        <h1 className="mb-4 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-8xl lg:text-9xl">
-          ROAR
-        </h1>
+        <div className="relative mx-auto mb-6 h-16 w-72 sm:h-24 sm:w-[440px] lg:h-28 lg:w-[520px]">
+          <Image
+            src="/roar-text.png"
+            alt="ROAR"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
         <p className="mb-2 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
           Strength &mdash; Conditioning &mdash; Performance
         </p>
