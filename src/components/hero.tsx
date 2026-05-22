@@ -35,7 +35,7 @@ export function Hero() {
         </p>
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
-            href="#cta"
+            href="#timetable"
             className={cn(
               buttonVariants({ size: "lg" }),
               "bg-white text-black hover:bg-white/90 text-sm font-semibold uppercase tracking-wider px-10 h-12"

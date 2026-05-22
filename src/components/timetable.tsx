@@ -158,7 +158,7 @@ export function Timetable() {
             {/* Book button */}
             {entry.type !== "open" && (
               <a
-                href="#cta"
+                href="#timetable"
                 className="shrink-0 rounded-md border border-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/50 transition-all hover:border-white/20 hover:text-white"
               >
                 Book

@@ -60,7 +60,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#cta"
+            href="#timetable"
             className={cn(
               buttonVariants(),
               "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider px-6"
@@ -91,7 +91,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#cta"
+                href="#timetable"
                 onClick={() => setOpen(false)}
                 className={cn(
                   buttonVariants(),
