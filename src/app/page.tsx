@@ -7,6 +7,7 @@ import { ServiceCard } from "@/components/service-card";
 import { ClassCard } from "@/components/class-card";
 import { CoachCard } from "@/components/coach-card";
 import { MembershipCard } from "@/components/membership-card";
+import { Timetable } from "@/components/timetable";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
@@ -232,6 +233,19 @@ export default function Home() {
                 <ClassCard key={cls.title} {...cls} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Timetable */}
+        <section id="timetable" className="relative py-24 sm:py-32">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              label="Class Schedule"
+              title="Timetable"
+              description="Find a session that fits your schedule. Classes run every day of the week."
+            />
+            <Timetable />
           </div>
         </section>
 

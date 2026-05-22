@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#classes", label: "Classes" },
+  { href: "#timetable", label: "Timetable" },
   { href: "#team", label: "Team" },
   { href: "#experience", label: "Why ROAR" },
   { href: "#memberships", label: "Memberships" },
