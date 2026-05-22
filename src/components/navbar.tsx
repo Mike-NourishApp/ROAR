@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -17,9 +17,25 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 50);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-black/70 backdrop-blur-xl">
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        scrolled
+          ? "bg-black/50 backdrop-blur-xl border-b border-white/5"
+          : "bg-transparent border-b border-transparent"
+      )}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="text-2xl font-black tracking-[0.2em] text-white">
           ROAR
