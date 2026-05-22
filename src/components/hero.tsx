@@ -1,8 +1,25 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onScroll() {
+      if (!contentRef.current) return;
+      const y = window.scrollY;
+      const speed = 0.4;
+      contentRef.current.style.transform = `translateY(${y * speed}px)`;
+      contentRef.current.style.opacity = `${Math.max(1 - y / 700, 0)}`;
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background image */}
@@ -19,7 +36,10 @@ export function Hero() {
       {/* Bottom gradient fade */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center sm:px-6 lg:px-8">
+      <div
+        ref={contentRef}
+        className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center will-change-transform sm:px-6 lg:px-8"
+      >
         <h1 className="mb-4 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-8xl lg:text-9xl">
           ROAR
         </h1>
