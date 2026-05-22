@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 
@@ -7,8 +8,15 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <div>
-            <p className="text-xl font-black tracking-[0.2em] text-white">ROAR</p>
-            <p className="mt-1 text-xs uppercase tracking-wider text-white/30">
+            <div className="relative h-10 w-28 mb-2">
+              <Image
+                src="/logo-white.png"
+                alt="ROAR"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <p className="text-xs uppercase tracking-wider text-white/30">
               Strength. Conditioning. Performance.
             </p>
             <p className="mt-1 text-xs text-white/20">Singapore</p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -38,8 +39,14 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-2xl font-black tracking-[0.2em] text-white">
-          ROAR
+        <Link href="/" className="relative h-10 w-28">
+          <Image
+            src="/logo-white.png"
+            alt="ROAR"
+            fill
+            className="object-contain object-left"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -25,11 +25,16 @@ export const metadata: Metadata = {
     "fitness Singapore",
     "ROAR gym",
   ],
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "ROAR | Strength. Conditioning. Performance.",
     description:
       "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community.",
     type: "website",
+    images: ["/logo-gold-rounded.png"],
   },
 };
 

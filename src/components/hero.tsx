@@ -20,12 +20,18 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center sm:px-6 lg:px-8">
-        <p className="mb-6 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
+        <div className="relative mx-auto mb-8 h-32 w-72 sm:h-44 sm:w-[420px] lg:h-52 lg:w-[500px]">
+          <Image
+            src="/logo-gold.png"
+            alt="ROAR"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+        <p className="mb-2 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
           Strength &mdash; Conditioning &mdash; Performance
         </p>
-        <h1 className="mb-8 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-8xl lg:text-9xl">
-          ROAR
-        </h1>
         <p className="mx-auto mb-3 max-w-2xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
           Singapore&apos;s performance-focused training space combining elite coaching,
           strength training, Hyrox conditioning and community.
