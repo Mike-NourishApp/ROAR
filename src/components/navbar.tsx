@@ -75,11 +75,11 @@ export function Navbar() {
             className="md:hidden"
             render={<Button variant="ghost" size="icon" />}
           >
-            <Menu className="h-5 w-5 text-white" />
+            <Menu className="h-7 w-7 text-white" />
             <span className="sr-only">Open menu</span>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 bg-[oklch(0.08_0_0)] border-white/5">
-            <nav className="mt-8 flex flex-col gap-6">
+          <SheetContent side="right" className="w-full bg-[oklch(0.08_0_0)] border-white/5">
+            <nav className="mt-12 flex flex-col gap-6 pl-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
