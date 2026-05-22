@@ -20,15 +20,6 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center sm:px-6 lg:px-8">
-        <div className="relative mx-auto mb-6 h-20 w-44 sm:h-28 sm:w-64">
-          <Image
-            src="/logo-gold.png"
-            alt="ROAR"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
         <h1 className="mb-4 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-8xl lg:text-9xl">
           ROAR
         </h1>
