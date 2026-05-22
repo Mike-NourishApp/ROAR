@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 
@@ -44,8 +45,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/5 pt-8 text-center text-[10px] uppercase tracking-wider text-white/20">
-          &copy; {new Date().getFullYear()} ROAR. All rights reserved.
+        <div className="mt-8 border-t border-white/5 pt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+          <p className="text-[10px] uppercase tracking-wider text-white/20">
+            &copy; {new Date().getFullYear()} ROAR. All rights reserved.
+          </p>
+          <div className="flex gap-4 text-[10px] uppercase tracking-wider text-white/20">
+            <Link href="/terms" className="hover:text-white/40">Terms</Link>
+            <Link href="/privacy" className="hover:text-white/40">Privacy</Link>
+            <Link href="/cookies" className="hover:text-white/40">Cookies</Link>
+          </div>
         </div>
       </div>
     </footer>
