@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Dumbbell, Zap, Timer, CreditCard } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
@@ -267,8 +268,17 @@ export default function Home() {
         </section>
 
         {/* Experience */}
-        <section id="experience" className="py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="experience" className="relative py-24 sm:py-32 overflow-hidden">
+          {/* Background image */}
+          <Image
+            src="/gym-floor.jpg"
+            alt="ROAR gym training floor"
+            fill
+            className="object-cover"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
               label="The ROAR Experience"
               title="Why Train at Roar?"
@@ -279,10 +289,10 @@ export default function Home() {
                 {whyRoar.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-white/10"
+                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm p-4 transition-all hover:border-white/20 hover:bg-black/50"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                    <span className="text-sm font-medium text-white/70">{item}</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
+                    <span className="text-sm font-medium text-white/80">{item}</span>
                   </div>
                 ))}
               </div>
