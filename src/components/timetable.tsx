@@ -1,171 +1,183 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { whatsappUrl } from "@/lib/site";
+import type { NourishClass } from "@/lib/nourish";
 
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
+const GYM_TIMEZONE = "Asia/Singapore";
 
-type ClassType = "strength" | "conditioning" | "hyrox" | "open";
-
-interface ScheduleEntry {
-  time: string;
-  name: string;
-  coach: string;
-  type: ClassType;
-  duration: string;
+interface DayTab {
+  key: string; // YYYY-MM-DD in gym time
+  weekday: string; // Mon
+  date: string; // 21 Jul
 }
 
-const typeStyles: Record<ClassType, string> = {
-  strength: "border-white/10 bg-white/[0.04]",
-  conditioning: "border-white/10 bg-white/[0.04]",
-  hyrox: "border-white/10 bg-white/[0.04]",
-  open: "border-white/5 bg-white/[0.02]",
-};
+function buildWeek(): DayTab[] {
+  const keyFmt = new Intl.DateTimeFormat("en-CA", {
+    timeZone: GYM_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const labelFmt = new Intl.DateTimeFormat("en-SG", {
+    timeZone: GYM_TIMEZONE,
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(Date.now() + i * 86_400_000);
+    const parts = labelFmt.formatToParts(d);
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+    return {
+      key: keyFmt.format(d),
+      weekday: get("weekday"),
+      date: `${get("day")} ${get("month")}`,
+    };
+  });
+}
 
-const typeLabels: Record<ClassType, string> = {
-  strength: "Strength",
-  conditioning: "Conditioning",
-  hyrox: "Hyrox",
-  open: "Open Gym",
-};
+function spotsLabel(cls: NourishClass): string | null {
+  if (cls.capacity == null) return null;
+  if (cls.spots_remaining != null && cls.spots_remaining <= 0) {
+    return cls.waitlist_full ? "Full" : "Waitlist";
+  }
+  if (cls.spots_remaining != null) {
+    return `${cls.spots_remaining} spot${cls.spots_remaining === 1 ? "" : "s"} left`;
+  }
+  return null;
+}
 
-const schedule: Record<(typeof days)[number], ScheduleEntry[]> = {
-  Mon: [
-    { time: "06:00", name: "ROAR Conditioning", coach: "Harry", type: "conditioning", duration: "60 min" },
-    { time: "07:15", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-    { time: "09:00", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-    { time: "12:00", name: "ROAR Conditioning", coach: "Marcus", type: "conditioning", duration: "45 min" },
-    { time: "17:30", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-    { time: "18:45", name: "ROAR Hyrox", coach: "Dana", type: "hyrox", duration: "60 min" },
-  ],
-  Tue: [
-    { time: "06:00", name: "ROAR Hyrox", coach: "Dana", type: "hyrox", duration: "60 min" },
-    { time: "07:15", name: "ROAR Conditioning", coach: "Harry", type: "conditioning", duration: "60 min" },
-    { time: "09:00", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-    { time: "17:30", name: "ROAR Conditioning", coach: "Marcus", type: "conditioning", duration: "60 min" },
-    { time: "18:45", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-  ],
-  Wed: [
-    { time: "06:00", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-    { time: "07:15", name: "ROAR Conditioning", coach: "Harry", type: "conditioning", duration: "60 min" },
-    { time: "09:00", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-    { time: "12:00", name: "ROAR Hyrox", coach: "Dana", type: "hyrox", duration: "45 min" },
-    { time: "17:30", name: "ROAR Hyrox", coach: "Lawrence", type: "hyrox", duration: "60 min" },
-    { time: "18:45", name: "ROAR Strength", coach: "Harry", type: "strength", duration: "60 min" },
-  ],
-  Thu: [
-    { time: "06:00", name: "ROAR Conditioning", coach: "Marcus", type: "conditioning", duration: "60 min" },
-    { time: "07:15", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-    { time: "09:00", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-    { time: "17:30", name: "ROAR Strength", coach: "Harry", type: "strength", duration: "60 min" },
-    { time: "18:45", name: "ROAR Conditioning", coach: "Dana", type: "conditioning", duration: "60 min" },
-  ],
-  Fri: [
-    { time: "06:00", name: "ROAR Hyrox", coach: "Lawrence", type: "hyrox", duration: "60 min" },
-    { time: "07:15", name: "ROAR Strength", coach: "Harry", type: "strength", duration: "60 min" },
-    { time: "09:00", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-    { time: "12:00", name: "ROAR Conditioning", coach: "Marcus", type: "conditioning", duration: "45 min" },
-    { time: "17:30", name: "ROAR Conditioning", coach: "Dana", type: "conditioning", duration: "60 min" },
-  ],
-  Sat: [
-    { time: "08:00", name: "ROAR Strength", coach: "Lawrence", type: "strength", duration: "60 min" },
-    { time: "09:15", name: "ROAR Hyrox", coach: "Dana", type: "hyrox", duration: "60 min" },
-    { time: "10:30", name: "ROAR Conditioning", coach: "Harry", type: "conditioning", duration: "60 min" },
-    { time: "11:45", name: "Open Gym", coach: "", type: "open", duration: "3 hrs" },
-  ],
-  Sun: [
-    { time: "09:00", name: "ROAR Conditioning", coach: "Marcus", type: "conditioning", duration: "60 min" },
-    { time: "10:15", name: "Open Gym", coach: "", type: "open", duration: "4 hrs" },
-  ],
-};
+export function Timetable({ classes }: { classes: NourishClass[] }) {
+  const [week] = useState(buildWeek);
+  const [activeDay, setActiveDay] = useState(0);
 
-export function Timetable() {
-  const today = new Date().getDay();
-  const defaultDay = today === 0 ? 6 : today - 1;
-  const [activeDay, setActiveDay] = useState(defaultDay);
+  const byDate = new Map<string, NourishClass[]>();
+  for (const cls of classes) {
+    const key = cls.scheduled_at_local.slice(0, 10);
+    byDate.set(key, [...(byDate.get(key) ?? []), cls]);
+  }
+  byDate.forEach((list) =>
+    list.sort((a, b) => a.scheduled_at_local.localeCompare(b.scheduled_at_local))
+  );
 
-  const entries = schedule[days[activeDay]];
+  const day = week[activeDay];
+  const entries = byDate.get(day.key) ?? [];
 
   return (
     <div>
       {/* Day tabs */}
-      <div className="mb-8 flex justify-center gap-1 sm:gap-2">
-        {days.map((day, i) => (
+      <div className="mb-8 flex flex-wrap justify-center gap-1 sm:gap-2">
+        {week.map((d, i) => (
           <button
-            key={day}
+            key={d.key}
             onClick={() => setActiveDay(i)}
             className={cn(
-              "rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all sm:px-5 sm:py-2.5",
+              "rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all sm:px-4 sm:py-2.5",
               activeDay === i
                 ? "bg-roar text-black"
                 : "text-white/40 hover:bg-white/5 hover:text-white/70"
             )}
           >
-            {day}
-          </button>
-        ))}
-      </div>
-
-      {/* Legend */}
-      <div className="mb-6 flex flex-wrap justify-center gap-4">
-        {(Object.keys(typeLabels) as ClassType[]).map((type) => (
-          <div key={type} className="flex items-center gap-2">
+            <span className="block">{i === 0 ? "Today" : d.weekday}</span>
             <span
               className={cn(
-                "h-2 w-2 rounded-full",
-                type === "strength" && "bg-white/70",
-                type === "conditioning" && "bg-white/40",
-                type === "hyrox" && "bg-white/55",
-                type === "open" && "bg-white/20"
+                "block text-[10px] font-medium normal-case tracking-normal",
+                activeDay === i ? "text-black/60" : "text-white/25"
               )}
-            />
-            <span className="text-[10px] uppercase tracking-wider text-white/40">
-              {typeLabels[type]}
+            >
+              {d.date}
             </span>
-          </div>
+          </button>
         ))}
       </div>
 
       {/* Schedule list */}
       <div className="mx-auto max-w-2xl space-y-2">
-        {entries.map((entry, i) => (
-          <div
-            key={`${entry.time}-${i}`}
-            className={cn(
-              "flex items-center gap-4 rounded-lg border px-5 py-4 transition-all hover:border-white/15",
-              typeStyles[entry.type]
-            )}
-          >
-            {/* Time */}
-            <div className="w-14 shrink-0 text-right">
-              <span className="text-sm font-bold tabular-nums text-white/80">
-                {entry.time}
-              </span>
-            </div>
-
-            {/* Divider */}
-            <div className="h-8 w-px bg-white/10" />
-
-            {/* Details */}
-            <div className="flex-1">
-              <p className="text-sm font-bold text-white">{entry.name}</p>
-              <div className="flex items-center gap-3 text-xs text-white/40">
-                {entry.coach && <span>{entry.coach}</span>}
-                <span>{entry.duration}</span>
-              </div>
-            </div>
-
-            {/* Book button */}
-            {entry.type !== "open" && (
-              <a
-                href="#timetable"
-                className="shrink-0 rounded-md border border-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/50 transition-all hover:border-white/20 hover:text-white"
-              >
-                Book
-              </a>
-            )}
+        {entries.length === 0 ? (
+          <div className="rounded-lg border border-white/5 bg-white/[0.02] px-5 py-10 text-center">
+            <p className="text-sm text-white/50">
+              No classes scheduled for {activeDay === 0 ? "today" : `${day.weekday} ${day.date}`} yet.
+            </p>
+            <a
+              href={whatsappUrl("Hey, when are your next classes running?")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-roar hover:text-roar/80"
+            >
+              <MessageCircle className="h-3.5 w-3.5" /> Ask us on WhatsApp
+            </a>
           </div>
-        ))}
+        ) : (
+          entries.map((cls) => {
+            const time = cls.scheduled_at_local.slice(11, 16);
+            const spots = spotsLabel(cls);
+            const full = spots === "Full";
+            return (
+              <div
+                key={cls.id}
+                className="flex items-center gap-4 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-4 transition-all hover:border-white/15"
+              >
+                {/* Time */}
+                <div className="w-14 shrink-0 text-right">
+                  <span className="text-sm font-bold tabular-nums text-white/80">
+                    {time}
+                  </span>
+                </div>
+
+                {/* Divider */}
+                <div className="h-8 w-px bg-white/10" />
+
+                {/* Details */}
+                <div className="flex min-w-0 flex-1 items-center gap-3">
+                  {cls.coach_profile_picture_url && (
+                    <Image
+                      src={cls.coach_profile_picture_url}
+                      alt={cls.coach_name ?? ""}
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 shrink-0 rounded-full object-cover"
+                    />
+                  )}
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-white">
+                      {cls.display_name}
+                    </p>
+                    <div className="flex items-center gap-3 text-xs text-white/40">
+                      {cls.coach_name && <span>{cls.coach_name}</span>}
+                      {cls.location && <span>{cls.location}</span>}
+                      {spots && (
+                        <span className={cn(full ? "text-white/30" : "text-roar/80")}>
+                          {spots}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Book button */}
+                <a
+                  href={whatsappUrl(
+                    `Hey, I'd like to book ${cls.display_name} on ${day.weekday} ${day.date} at ${time}.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "shrink-0 rounded-md border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all",
+                    full
+                      ? "border-white/10 text-white/50 hover:border-white/20 hover:text-white"
+                      : "border-roar/30 text-roar hover:bg-roar hover:text-black"
+                  )}
+                >
+                  {full ? "Join Waitlist" : "Book"}
+                </a>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

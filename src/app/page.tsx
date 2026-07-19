@@ -9,6 +9,7 @@ import { ClassCard } from "@/components/class-card";
 import { CoachCard } from "@/components/coach-card";
 import { MembershipCard } from "@/components/membership-card";
 import { Timetable } from "@/components/timetable";
+import { getUpcomingClasses } from "@/lib/nourish";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
@@ -195,7 +196,9 @@ const whyRoar = [
   "Results-driven training",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const upcomingClasses = await getUpcomingClasses();
+
   return (
     <>
       <Navbar />
@@ -244,9 +247,9 @@ export default function Home() {
             <SectionHeading
               label="Class Schedule"
               title="Timetable"
-              description="Find a session that fits your schedule. Classes run every day of the week."
+              description="Live schedule for the week ahead. Find a session that fits and book your spot."
             />
-            <Timetable />
+            <Timetable classes={upcomingClasses} />
           </div>
         </section>
 

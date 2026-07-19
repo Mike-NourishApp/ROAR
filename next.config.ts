@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      // Nourish platform assets (coach photos, class covers)
+      { protocol: "https", hostname: "**.cloudfront.net" },
+    ],
+  },
 };
 
 export default nextConfig;
