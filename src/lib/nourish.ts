@@ -26,15 +26,23 @@ export interface NourishClass {
 }
 
 export async function getUpcomingClasses(): Promise<NourishClass[]> {
+  const classes: NourishClass[] = [];
   try {
-    const res = await fetch(`${API_BASE}/classes?per_page=100`, {
-      headers: { Accept: "application/json", Origin: EMBED_ORIGIN },
-      next: { revalidate: 300 },
-    });
-    if (!res.ok) return [];
-    const json = await res.json();
-    return Array.isArray(json.data) ? json.data : [];
+    let url: string | null = `${API_BASE}/classes?per_page=100`;
+    let pages = 0;
+    while (url && pages < 5) {
+      const res: Response = await fetch(url, {
+        headers: { Accept: "application/json", Origin: EMBED_ORIGIN },
+        next: { revalidate: 300 },
+      });
+      if (!res.ok) break;
+      const json = await res.json();
+      if (Array.isArray(json.data)) classes.push(...json.data);
+      url = json.links?.next ?? null;
+      pages++;
+    }
   } catch {
-    return [];
+    // fall through to whatever we collected
   }
+  return classes;
 }

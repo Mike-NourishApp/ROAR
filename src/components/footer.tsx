@@ -10,9 +10,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="relative h-10 w-28 mb-2">
+            <div className="relative h-12 w-36 mb-2">
               <Image
-                src="/logo-white.png"
+                src="/logo-gold.png"
                 alt="ROAR"
                 fill
                 className="object-contain object-left"

@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { whatsappUrl } from "@/lib/site";
 import type { NourishClass } from "@/lib/nourish";
 
 const GYM_TIMEZONE = "Asia/Singapore";
+const TOTAL_DAYS = 30;
+const VISIBLE_DAYS = 7;
 
 interface DayTab {
   key: string; // YYYY-MM-DD in gym time
@@ -15,7 +17,7 @@ interface DayTab {
   date: string; // 21 Jul
 }
 
-function buildWeek(): DayTab[] {
+function buildDays(): DayTab[] {
   const keyFmt = new Intl.DateTimeFormat("en-CA", {
     timeZone: GYM_TIMEZONE,
     year: "numeric",
@@ -28,7 +30,7 @@ function buildWeek(): DayTab[] {
     day: "numeric",
     month: "short",
   });
-  return Array.from({ length: 7 }, (_, i) => {
+  return Array.from({ length: TOTAL_DAYS }, (_, i) => {
     const d = new Date(Date.now() + i * 86_400_000);
     const parts = labelFmt.formatToParts(d);
     const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
@@ -52,8 +54,9 @@ function spotsLabel(cls: NourishClass): string | null {
 }
 
 export function Timetable({ classes }: { classes: NourishClass[] }) {
-  const [week] = useState(buildWeek);
+  const [days] = useState(buildDays);
   const [activeDay, setActiveDay] = useState(0);
+  const [windowStart, setWindowStart] = useState(0);
 
   const byDate = new Map<string, NourishClass[]>();
   for (const cls of classes) {
@@ -64,35 +67,64 @@ export function Timetable({ classes }: { classes: NourishClass[] }) {
     list.sort((a, b) => a.scheduled_at_local.localeCompare(b.scheduled_at_local))
   );
 
-  const day = week[activeDay];
+  const maxStart = TOTAL_DAYS - VISIBLE_DAYS;
+  const visibleDays = days.slice(windowStart, windowStart + VISIBLE_DAYS);
+  const day = days[activeDay];
   const entries = byDate.get(day.key) ?? [];
+
+  function page(delta: number) {
+    setWindowStart((s) => Math.min(maxStart, Math.max(0, s + delta)));
+  }
 
   return (
     <div>
       {/* Day tabs */}
-      <div className="mb-8 flex flex-wrap justify-center gap-1 sm:gap-2">
-        {week.map((d, i) => (
-          <button
-            key={d.key}
-            onClick={() => setActiveDay(i)}
-            className={cn(
-              "rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all sm:px-4 sm:py-2.5",
-              activeDay === i
-                ? "bg-roar text-black"
-                : "text-white/40 hover:bg-white/5 hover:text-white/70"
-            )}
-          >
-            <span className="block">{i === 0 ? "Today" : d.weekday}</span>
-            <span
-              className={cn(
-                "block text-[10px] font-medium normal-case tracking-normal",
-                activeDay === i ? "text-black/60" : "text-white/25"
-              )}
-            >
-              {d.date}
-            </span>
-          </button>
-        ))}
+      <div className="mb-8 flex items-center justify-center gap-1 sm:gap-2">
+        <button
+          onClick={() => page(-VISIBLE_DAYS)}
+          disabled={windowStart === 0}
+          aria-label="Earlier days"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-roar/40 hover:text-roar disabled:pointer-events-none disabled:opacity-20"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+
+        <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
+          {visibleDays.map((d) => {
+            const i = days.indexOf(d);
+            return (
+              <button
+                key={d.key}
+                onClick={() => setActiveDay(i)}
+                className={cn(
+                  "rounded-lg px-2.5 py-2 text-xs font-semibold uppercase tracking-wider transition-all sm:px-4 sm:py-2.5",
+                  activeDay === i
+                    ? "bg-roar text-black"
+                    : "text-white/40 hover:bg-white/5 hover:text-white/70"
+                )}
+              >
+                <span className="block">{i === 0 ? "Today" : d.weekday}</span>
+                <span
+                  className={cn(
+                    "block text-[10px] font-medium normal-case tracking-normal",
+                    activeDay === i ? "text-black/60" : "text-white/25"
+                  )}
+                >
+                  {d.date}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={() => page(VISIBLE_DAYS)}
+          disabled={windowStart >= maxStart}
+          aria-label="Later days"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-roar/40 hover:text-roar disabled:pointer-events-none disabled:opacity-20"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
       </div>
 
       {/* Schedule list */}
