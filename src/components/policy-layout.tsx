@@ -9,7 +9,7 @@ export function PolicyLayout({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex h-16 max-w-3xl items-center px-4 sm:px-6">
           <Link href="/" className="relative h-10 w-28">
             <Image
-              src="/logo-white.png"
+              src="/logo-gold.png"
               alt="ROAR"
               fill
               className="object-contain object-left"
