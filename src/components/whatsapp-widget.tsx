@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const PHONE = "6586062819";
+import { whatsappUrl } from "@/lib/site";
 
 const quickMessages = [
   "I'm interested in joining ROAR, can you give me more info?",
@@ -19,8 +18,7 @@ export function WhatsAppWidget() {
   const [sent, setSent] = useState(false);
 
   function handleSend(text: string) {
-    const encoded = encodeURIComponent(text);
-    const url = `https://api.whatsapp.com/send/?phone=${PHONE}&text=${encoded}&type=phone_number&app_absent=0`;
+    const url = whatsappUrl(text);
     window.open(url, "_blank", "noopener,noreferrer,width=600,height=700");
     setSent(true);
     setTimeout(() => {

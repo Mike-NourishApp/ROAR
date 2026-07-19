@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Barlow_Condensed } from "next/font/google";
 import { CookieBanner } from "@/components/cookie-banner";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  weight: ["500", "600", "700", "900"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://theroargym.com"),
   title: "ROAR | Strength. Conditioning. Performance. | Singapore",
   description:
     "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community. Leave life's BS at the door.",
@@ -47,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

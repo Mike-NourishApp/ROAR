@@ -30,7 +30,7 @@ export function MembershipCard({ title, description, featured }: MembershipCardP
           buttonVariants({ variant: featured ? "default" : "outline" }),
           "w-full text-xs font-semibold uppercase tracking-wider",
           featured
-            ? "bg-white text-black hover:bg-white/90"
+            ? "bg-roar text-black hover:bg-roar/90"
             : "border-white/10 text-white/60 hover:bg-white/5 hover:text-white"
         )}
       >

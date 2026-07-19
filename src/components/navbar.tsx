@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#classes", label: "Classes" },
-  { href: "#timetable", label: "Timetable" },
-  { href: "#team", label: "Team" },
-  { href: "#experience", label: "Why ROAR" },
-  { href: "#memberships", label: "Memberships" },
+  { href: "/#services", label: "Services" },
+  { href: "/#classes", label: "Classes" },
+  { href: "/#timetable", label: "Timetable" },
+  { href: "/#team", label: "Team" },
+  { href: "/#memberships", label: "Memberships" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -51,23 +51,23 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-xs font-medium uppercase tracking-wider text-white/50 transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#timetable"
+          <Link
+            href="/#timetable"
             className={cn(
               buttonVariants(),
-              "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider px-6"
+              "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-6"
             )}
           >
             Book a Class
-          </a>
+          </Link>
         </nav>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -81,25 +81,25 @@ export function Navbar() {
           <SheetContent side="right" className="w-full bg-[oklch(0.08_0_0)] border-white/5">
             <nav className="mt-12 flex flex-col gap-6 pl-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="text-sm font-medium uppercase tracking-wider text-white/70 hover:text-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#timetable"
+              <Link
+                href="/#timetable"
                 onClick={() => setOpen(false)}
                 className={cn(
                   buttonVariants(),
-                  "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider"
+                  "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider"
                 )}
               >
                 Book a Class
-              </a>
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>

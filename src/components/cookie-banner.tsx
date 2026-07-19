@@ -165,7 +165,7 @@ export function CookieBanner() {
               </Button>
               <Button
                 onClick={savePreferences}
-                className="flex-1 bg-white text-black hover:bg-white/90 text-xs uppercase tracking-wider"
+                className="flex-1 bg-roar text-black hover:bg-roar/90 text-xs uppercase tracking-wider"
               >
                 Save Preferences
               </Button>
@@ -205,7 +205,7 @@ export function CookieBanner() {
                 </Button>
                 <Button
                   onClick={acceptAll}
-                  className="bg-white text-black hover:bg-white/90 text-xs uppercase tracking-wider px-5"
+                  className="bg-roar text-black hover:bg-roar/90 text-xs uppercase tracking-wider px-5"
                 >
                   Accept All
                 </Button>

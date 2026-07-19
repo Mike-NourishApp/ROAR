@@ -1,5 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { site, whatsappUrl } from "@/lib/site";
 import { MessageCircle, CalendarCheck } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 
@@ -25,14 +26,16 @@ export function CtaSection() {
             href="#timetable"
             className={cn(
               buttonVariants({ size: "lg" }),
-              "bg-white text-black hover:bg-white/90 text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
+              "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
             )}
           >
             <CalendarCheck className="h-4 w-4" />
             Book Your First Class
           </a>
           <a
-            href="https://api.whatsapp.com/send/?phone=6586062819&text=Hey+I%27m+interested+in+ROAR%2C+can+you+give+me+some+more+info%3F&type=phone_number&app_absent=0"
+            href={whatsappUrl(
+              "Hey I'm interested in ROAR, can you give me some more info?"
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -44,7 +47,7 @@ export function CtaSection() {
             WhatsApp Us
           </a>
           <a
-            href="https://instagram.com/"
+            href={site.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(

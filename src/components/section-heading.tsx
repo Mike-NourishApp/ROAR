@@ -8,7 +8,7 @@ export function SectionHeading({ label, title, description }: SectionHeadingProp
   return (
     <div className="mb-16 text-center">
       {label && (
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-white/40">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-roar">
           {label}
         </p>
       )}

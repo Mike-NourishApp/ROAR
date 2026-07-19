@@ -97,7 +97,7 @@ export function Timetable() {
             className={cn(
               "rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all sm:px-5 sm:py-2.5",
               activeDay === i
-                ? "bg-white text-black"
+                ? "bg-roar text-black"
                 : "text-white/40 hover:bg-white/5 hover:text-white/70"
             )}
           >
