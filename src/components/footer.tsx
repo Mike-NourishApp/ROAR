@@ -4,10 +4,56 @@ import { MessageCircle, MapPin, Clock, Mail } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 import { site, whatsappUrl } from "@/lib/site";
 
+const linkColumns = [
+  {
+    title: "Explore",
+    links: [
+      { label: "Classes", href: "/#classes" },
+      { label: "Timetable", href: "/#timetable" },
+      { label: "Coaches", href: "/#team" },
+      { label: "Memberships", href: "/#memberships" },
+      { label: "Recovery", href: "/recovery" },
+      { label: "Merchandise", href: "/merchandise" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Enquire Now", href: "/#founding" },
+      { label: "Book a Consultation", href: "/#founding" },
+      { label: "Founding Membership", href: "/#founding" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Waiver", href: "/waiver" },
+      { label: "Gym Rules", href: "/gym-rules" },
+      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Data Protection Officer", href: "/dpo" },
+    ],
+  },
+  {
+    title: "Member Policies",
+    links: [
+      { label: "Cancellation", href: "/terms#cancellation" },
+      { label: "Freeze", href: "/terms#freeze" },
+      { label: "Personal Training", href: "/terms#personal-training" },
+      { label: "Class Booking", href: "/terms#class-booking" },
+      { label: "Founding Membership Terms", href: "/terms#founding" },
+    ],
+  },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-white/5 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Brand + contact info */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="relative h-12 w-36 mb-2">
@@ -103,25 +149,41 @@ export function Footer() {
                   {site.instagramHandle}
                 </a>
               </li>
-              <li>
-                <Link href="/contact" className="text-white/70 hover:text-white">
-                  Contact page &rarr;
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
 
+        {/* Site links */}
+        <div className="mt-12 grid gap-10 border-t border-white/5 pt-10 grid-cols-2 lg:grid-cols-4">
+          {linkColumns.map((col) => (
+            <div key={col.title}>
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-white/40">
+                {col.title}
+              </h3>
+              <ul className="space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={`${col.title}-${link.label}`}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/50 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
         <div className="mt-10 border-t border-white/5 pt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
           <p className="text-[10px] uppercase tracking-wider text-white/20">
-            &copy; {new Date().getFullYear()} ROAR. All rights reserved.
+            &copy; {new Date().getFullYear()} ROAR Gym Pte Ltd. All rights reserved.
           </p>
-          <div className="flex gap-4 text-[10px] uppercase tracking-wider text-white/20">
-            <Link href="/contact" className="hover:text-white/40">Contact</Link>
-            <Link href="/terms" className="hover:text-white/40">Terms</Link>
-            <Link href="/privacy" className="hover:text-white/40">Privacy</Link>
-            <Link href="/cookies" className="hover:text-white/40">Cookies</Link>
-          </div>
+          <p className="text-[10px] uppercase tracking-wider text-white/20">
+            {site.address}
+          </p>
         </div>
       </div>
     </footer>

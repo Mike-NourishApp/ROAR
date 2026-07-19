@@ -3,181 +3,142 @@ import { PolicyLayout } from "@/components/policy-layout";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | ROAR",
-  description: "Terms and conditions for using ROAR gym services, memberships, and website.",
+  description:
+    "Terms and conditions for ROAR Gym memberships, class bookings, and services — including cancellation, freeze, and founding membership policies.",
 };
 
 export default function TermsPage() {
   return (
     <PolicyLayout>
       <h1 className="mb-2 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
-        Terms & Conditions
+        Terms &amp; Conditions
       </h1>
-      <p className="mb-12 text-xs text-white/30">Last updated: 22 May 2025</p>
+      <p className="mb-12 text-xs text-white/30">Last updated: June 2026</p>
 
       <div className="space-y-8 text-sm leading-relaxed text-white/60">
         <section>
-          <h2 className="mb-3 text-lg font-bold text-white">1. Overview</h2>
+          <h2 className="mb-3 text-lg font-bold text-white">1. Agreement</h2>
           <p>
-            These Terms and Conditions govern your use of the ROAR website, services, facilities, and
-            class bookings. By accessing our website or using our services, you agree to be bound by
-            these terms. ROAR is a performance-focused gym and training facility located in Singapore.
+            By purchasing a membership, booking a class, or using any service provided by ROAR Gym
+            Pte Ltd (&ldquo;ROAR Gym&rdquo;), you agree to be bound by these Terms and Conditions.
+            Please read them carefully before proceeding.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-lg font-bold text-white">2. Eligibility</h2>
+          <h2 className="mb-3 text-lg font-bold text-white">2. Membership</h2>
           <p>
-            You must be at least 16 years of age to use ROAR facilities and services. Members under 18
-            require parental or guardian consent. By using our services, you represent that you meet
-            these eligibility requirements.
+            All memberships are personal and non-transferable. ROAR Gym reserves the right to
+            refuse or terminate membership at its discretion. Members must comply with all gym
+            rules and policies at all times.
           </p>
         </section>
 
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">3. Memberships & Subscriptions</h2>
-          <p className="mb-3">
-            ROAR offers various membership options including but not limited to: Unlimited Classes,
-            Open Gym, Hybrid Memberships, PT Packages, and Intro Trial Weeks. Specific terms for
-            each membership type will be provided at the time of purchase.
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>Memberships are non-transferable unless otherwise agreed in writing.</li>
-            <li>Auto-renewal memberships will be billed on a recurring basis until cancelled.</li>
-            <li>Cancellation must be submitted with a minimum of 30 days&apos; written notice.</li>
-            <li>Refunds are not provided for unused portions of pre-paid memberships.</li>
-            <li>ROAR reserves the right to modify membership pricing with 30 days&apos; notice.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">4. Class Bookings</h2>
-          <p className="mb-3">
-            Class bookings are subject to availability. Members are expected to:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5">
-            <li>Book classes in advance through our designated booking system.</li>
-            <li>Cancel bookings at least 4 hours before the scheduled class time.</li>
-            <li>Arrive on time. Late arrivals may be refused entry for safety reasons.</li>
-            <li>Repeated no-shows may result in booking restrictions.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">5. Personal Training</h2>
-          <p>
-            Personal training sessions are subject to separate terms agreed upon between the client
-            and coach. PT packages have an expiry period from the date of purchase unless otherwise
-            stated. Cancellation of individual PT sessions requires a minimum of 12 hours&apos; notice.
-            Sessions cancelled with less notice will be deducted from the package.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">6. Health & Safety</h2>
-          <p className="mb-3">
-            By using ROAR facilities and services, you acknowledge and agree that:
-          </p>
+        <section id="founding">
+          <h2 className="mb-3 text-lg font-bold text-white">3. Founding Membership Terms</h2>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
-              You are physically fit to participate in exercise and training activities. You should
-              consult a medical professional before beginning any exercise programme.
+              Founding Membership rates apply only during the initial membership term. Renewal
+              rates may vary and will be subject to the prevailing membership pricing at the time
+              of renewal.
             </li>
             <li>
-              ROAR, its coaches, and staff are not liable for any injury, illness, or health
-              condition arising from participation in our services.
+              Founding membership includes full gym access, exclusive founding member merchandise,
+              and first access to the ROAR app.
             </li>
+            <li>Founding membership is non-refundable once confirmed.</li>
+            <li>Membership commences on the official opening date of ROAR Gym.</li>
             <li>
-              Training programmes and coaching advice are provided for informational and fitness
-              purposes only and do not constitute medical advice.
-            </li>
-            <li>
-              You are responsible for using equipment safely and following coach instructions.
-            </li>
-            <li>
-              You must disclose any medical conditions, injuries, or limitations to your coach
-              before participating in any session.
+              ROAR Gym reserves the right to amend founding membership benefits with reasonable
+              notice.
             </li>
           </ul>
         </section>
 
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">7. Facility Rules</h2>
+        <section id="cancellation">
+          <h2 className="mb-3 text-lg font-bold text-white">
+            4. Class &amp; Personal Training Cancellation Policy
+          </h2>
+          <div className="border border-white/10 p-6">
+            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
+              Cancellation Policy
+            </p>
+            <ul className="list-disc pl-5 space-y-1.5">
+              <li>
+                Members must cancel any class, consultation, group session, personal training
+                session, or appointment at least 24 hours before the scheduled start time.
+              </li>
+              <li>
+                Any cancellation made within 24 hours of the scheduled session will be considered
+                attended.
+              </li>
+              <li>No refund, credit, transfer, extension, or rescheduling will be provided.</li>
+              <li>No-shows will be treated as attended sessions.</li>
+              <li>ROAR Gym reserves the right to amend booking policies with reasonable notice.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="class-booking">
+          <h2 className="mb-3 text-lg font-bold text-white">5. Class Booking Policy</h2>
           <ul className="list-disc pl-5 space-y-1.5">
-            <li>All members must adhere to gym etiquette and respect other members and staff.</li>
-            <li>Equipment must be returned to its designated area after use.</li>
-            <li>Appropriate athletic attire and footwear must be worn at all times.</li>
-            <li>Photography and filming require prior permission from ROAR management.</li>
+            <li>Classes must be booked in advance through the ROAR Gym app or website.</li>
+            <li>Bookings are subject to availability.</li>
+            <li>Members on waitlists will be notified if a spot becomes available.</li>
             <li>
-              ROAR reserves the right to refuse entry or revoke membership of any individual who
-              behaves inappropriately or violates these terms.
+              ROAR Gym reserves the right to cancel or reschedule classes with reasonable notice.
             </li>
           </ul>
         </section>
 
+        <section id="freeze">
+          <h2 className="mb-3 text-lg font-bold text-white">6. Membership Freeze Policy</h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              Members may request a membership freeze for medical reasons with supporting
+              documentation.
+            </li>
+            <li>Freeze requests must be submitted at least 7 days in advance.</li>
+            <li>Minimum freeze period: 1 month. Maximum freeze period: 3 months per year.</li>
+            <li>Membership duration will be extended by the approved freeze period.</li>
+            <li>Freeze requests are subject to management approval.</li>
+          </ul>
+        </section>
+
+        <section id="personal-training">
+          <h2 className="mb-3 text-lg font-bold text-white">7. Personal Training Terms</h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>Personal training sessions must be booked and confirmed in advance.</li>
+            <li>Sessions are non-transferable and non-refundable once purchased.</li>
+            <li>The 24-hour cancellation policy applies to all personal training sessions.</li>
+            <li>Unused sessions expire 12 months from the date of purchase.</li>
+            <li>ROAR Gym reserves the right to reassign trainers where necessary.</li>
+          </ul>
+        </section>
+
         <section>
-          <h2 className="mb-3 text-lg font-bold text-white">8. Intellectual Property</h2>
+          <h2 className="mb-3 text-lg font-bold text-white">8. Liability</h2>
           <p>
-            All content on the ROAR website, including text, images, logos, branding, and programming,
-            is the intellectual property of ROAR and may not be reproduced, distributed, or used
-            without prior written consent.
+            ROAR Gym shall not be liable for any injury, loss, or damage to persons or property
+            arising from the use of our facilities, except where caused by our gross negligence.
+            Members participate in all activities at their own risk.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-lg font-bold text-white">9. Privacy</h2>
+          <h2 className="mb-3 text-lg font-bold text-white">9. Amendments</h2>
           <p>
-            Your personal information is handled in accordance with our{" "}
-            <a href="/privacy" className="underline text-white/80 hover:text-white">
-              Privacy Policy
-            </a>
-            . By using our services, you consent to the collection and use of your information as
-            described therein.
+            ROAR Gym reserves the right to amend these Terms and Conditions at any time. Members
+            will be notified of material changes. Continued use of our services constitutes
+            acceptance of the updated terms.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-lg font-bold text-white">10. Limitation of Liability</h2>
+          <h2 className="mb-3 text-lg font-bold text-white">10. Governing Law</h2>
           <p>
-            To the fullest extent permitted by law, ROAR shall not be liable for any indirect,
-            incidental, special, consequential, or punitive damages, including but not limited to
-            loss of profits, data, or use, arising from your use of our facilities, services, or
-            website. Our total liability for any claim arising from these terms shall not exceed the
-            amount paid by you in the preceding 12 months.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">11. Suspension & Termination</h2>
-          <p>
-            ROAR reserves the right to suspend or terminate your membership or access to services at
-            any time for breach of these terms, with or without notice. In the event ROAR terminates
-            your membership without cause, a pro-rata refund of any pre-paid fees will be provided.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">12. Changes to Terms</h2>
-          <p>
-            ROAR may update these Terms and Conditions from time to time. Changes will be posted on
-            this page with an updated &ldquo;last updated&rdquo; date. Continued use of our services
-            following any changes constitutes acceptance of the revised terms.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">13. Governing Law</h2>
-          <p>
-            These Terms and Conditions are governed by and construed in accordance with the laws of
-            Singapore. Any disputes arising from these terms shall be subject to the exclusive
-            jurisdiction of the courts of Singapore.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-lg font-bold text-white">14. Contact</h2>
-          <p>
-            If you have any questions about these Terms and Conditions, please contact us via
-            WhatsApp at +65 8606 2819 or through our website.
+            These Terms and Conditions are governed by the laws of Singapore. Any disputes shall be
+            subject to the exclusive jurisdiction of the Singapore courts.
           </p>
         </section>
       </div>
