@@ -5,8 +5,16 @@ const API_BASE = `https://my.nourishapp.co.nz/api/embed/${EMBED_ID}`;
 // Server-side we always identify as the production Vercel domain.
 const EMBED_ORIGIN = "https://roar-nourishapp.vercel.app";
 
+// The hosted booking widget. Appending ?class=<id> opens that class's
+// booking modal on load (the embed reads the "class" query param).
+const EMBED_BOOKING_URL = `https://my.nourishapp.co.nz/embed/${EMBED_ID}`;
+
+export function classBookingUrl(classId: string): string {
+  return `${EMBED_BOOKING_URL}?class=${encodeURIComponent(classId)}`;
+}
+
 export interface NourishClass {
-  id: number;
+  id: string;
   scheduled_at: string;
   scheduled_at_local: string;
   timezone: string;

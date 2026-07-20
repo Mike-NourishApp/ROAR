@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { whatsappUrl } from "@/lib/site";
-import type { NourishClass } from "@/lib/nourish";
+import { classBookingUrl, type NourishClass } from "@/lib/nourish";
 
 const GYM_TIMEZONE = "Asia/Singapore";
 const TOTAL_DAYS = 30;
@@ -192,9 +192,7 @@ export function Timetable({ classes }: { classes: NourishClass[] }) {
 
                 {/* Book button */}
                 <a
-                  href={whatsappUrl(
-                    `Hey, I'd like to book ${cls.display_name} on ${day.weekday} ${day.date} at ${time}.`
-                  )}
+                  href={classBookingUrl(cls.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
