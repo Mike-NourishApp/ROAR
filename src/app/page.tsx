@@ -206,6 +206,9 @@ export default async function Home() {
       <main className="flex-1">
         <Hero />
 
+        {/* Founding membership */}
+        <FoundingSection />
+
         {/* Services */}
         <section id="services" className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -320,9 +323,6 @@ export default async function Home() {
             </div>
           </div>
         </section>
-
-        {/* Founding membership */}
-        <FoundingSection />
 
         {/* Final CTA */}
         <CtaSection />
