@@ -42,7 +42,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="relative h-12 w-36">
           <Image
-            src="/logo-gold.png"
+            src="/roar-text.png"
             alt="ROAR"
             fill
             className="object-contain object-left"

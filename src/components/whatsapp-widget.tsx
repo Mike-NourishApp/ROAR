@@ -33,7 +33,7 @@ export function WhatsAppWidget() {
       {/* Floating button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/20 transition-transform hover:scale-105 active:scale-95"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-roar text-black shadow-lg shadow-roar/20 transition-transform hover:scale-105 active:scale-95"
         aria-label={open ? "Close chat" : "Chat on WhatsApp"}
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -43,14 +43,14 @@ export function WhatsAppWidget() {
       {open && (
         <div className="fixed bottom-24 right-6 z-50 w-[340px] overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.1_0_0)] shadow-2xl shadow-black/50 sm:w-[380px]">
           {/* Header */}
-          <div className="bg-[#25D366] px-5 py-4">
+          <div className="bg-roar px-5 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-sm font-black text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/15 text-sm font-black text-black">
                 R
               </div>
               <div>
-                <p className="font-bold text-white">ROAR</p>
-                <p className="text-xs text-white/80">Typically replies within minutes</p>
+                <p className="font-bold text-black">ROAR</p>
+                <p className="text-xs text-black/70">Typically replies within minutes</p>
               </div>
             </div>
           </div>
@@ -58,8 +58,8 @@ export function WhatsAppWidget() {
           {sent ? (
             /* Success state */
             <div className="flex flex-col items-center justify-center gap-3 px-5 py-12">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]/20">
-                <MessageCircle className="h-6 w-6 text-[#25D366]" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-roar/20">
+                <MessageCircle className="h-6 w-6 text-roar" />
               </div>
               <p className="text-sm font-medium text-white">Opening WhatsApp...</p>
               <p className="text-xs text-white/40">Continue the conversation there</p>
@@ -107,7 +107,7 @@ export function WhatsAppWidget() {
                     size="icon"
                     onClick={() => message.trim() && handleSend(message)}
                     disabled={!message.trim()}
-                    className="h-10 w-10 rounded-full bg-[#25D366] text-white hover:bg-[#25D366]/80 disabled:opacity-30"
+                    className="h-10 w-10 rounded-full bg-roar text-black hover:bg-roar/90 disabled:opacity-30"
                   >
                     <Send className="h-4 w-4" />
                   </Button>
