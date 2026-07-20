@@ -41,24 +41,16 @@ export function Hero() {
         ref={contentRef}
         className="relative z-10 mx-auto max-w-4xl px-4 py-32 text-center will-change-transform sm:px-6 lg:px-8"
       >
-        <div className="relative mx-auto mb-6 h-16 w-72 sm:h-24 sm:w-[440px] lg:h-28 lg:w-[520px]">
-          <Image
-            src="/roar-text.png"
-            alt="ROAR"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-        <p className="mb-2 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-white/50">
           Strength &mdash; Conditioning &mdash; Performance
         </p>
-        <p className="mx-auto mb-3 max-w-2xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
-          Singapore&apos;s performance-focused training space combining elite coaching,
+        <h1 className="mb-5 text-4xl font-black uppercase leading-[0.95] text-white sm:text-6xl lg:text-7xl">
+          Singapore&apos;s Home
+          <br className="hidden sm:block" /> Of High Performance
+        </h1>
+        <p className="mx-auto mb-12 max-w-2xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
+          A performance-focused training space combining elite coaching,
           strength training, Hyrox conditioning and community.
-        </p>
-        <p className="mb-10 text-sm font-medium uppercase tracking-[0.15em] text-white/40">
-          Leave life&apos;s BS at the door.
         </p>
         <div className="mb-12">
           <Countdown />

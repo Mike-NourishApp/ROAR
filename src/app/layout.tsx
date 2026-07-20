@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://theroargym.com"),
   title: "ROAR | Strength. Conditioning. Performance. | Singapore",
   description:
-    "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community. Leave life's BS at the door.",
+    "Singapore's performance-focused training space combining elite coaching, strength training, Hyrox conditioning and community.",
   keywords: [
     "gym Singapore",
     "Hyrox Singapore",
