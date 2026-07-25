@@ -22,7 +22,7 @@ export function CoachCard({
 
   return (
     <div className="rounded-lg border border-white/5 bg-white/[0.02] overflow-hidden transition-all hover:border-white/10 hover:bg-white/[0.04]">
-      <div className="aspect-[4/5] relative bg-white/[0.03]">
+      <div className="aspect-square relative bg-white/[0.03]">
         {image ? (
           <Image
             src={image}
