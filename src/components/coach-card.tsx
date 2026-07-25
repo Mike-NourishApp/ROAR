@@ -65,7 +65,9 @@ export function CoachCard({
           )}
         </div>
         {showBio && (
-          <p className="mb-4 text-sm leading-relaxed text-white/50">{bio}</p>
+          <p className="mb-4 text-sm leading-relaxed text-white/50 line-clamp-5">
+            {bio}
+          </p>
         )}
         {qualifications && qualifications.length > 0 && (
           <div>
