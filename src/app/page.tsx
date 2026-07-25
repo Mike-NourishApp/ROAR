@@ -9,7 +9,7 @@ import { ClassCard } from "@/components/class-card";
 import { CoachCard } from "@/components/coach-card";
 import { MembershipCard } from "@/components/membership-card";
 import { Timetable } from "@/components/timetable";
-import { getUpcomingClasses } from "@/lib/nourish";
+import { getUpcomingClasses, getCoaches } from "@/lib/nourish";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
@@ -101,56 +101,6 @@ const classes = [
   },
 ];
 
-const coaches = [
-  {
-    name: "Lawrence",
-    role: "Founder & Head Coach",
-    image: "/coaches/lawrence.webp",
-    bio: "One of Singapore's most in-demand personal trainers and a lifelong competitive athlete. Award-winning boxer, rugby player and MMA fighter turned full-time coach in 2012. Co-founded BBL with a mission to empower personal transformation.",
-    achievements: [
-      "Singapore Hyrox Champion",
-      "Hyrox World Championship competitor",
-      "Award-winning boxer, rugby player & MMA fighter",
-      "Coached hundreds of clients since 2012",
-    ],
-  },
-  {
-    name: "Harry",
-    role: "Personal Trainer",
-    image: "/coaches/harry.webp",
-    bio: "Former Royal Marine with nearly 9 years of military experience including counter-piracy operations and special forces activities. Specialises in pushing clients beyond their limits with structured, results-driven programming.",
-    achievements: [
-      "Physical Training Medal — Royal Marines",
-      "Tarzan Assault Course record holder",
-      "Man of Steel Award — Marines Rugby League",
-      "Competed in rugby, bobsleigh, powerlifting & strongman",
-    ],
-  },
-  {
-    name: "Marcus",
-    role: "Personal Trainer",
-    image: "/coaches/marcus.webp",
-    bio: "Driven by a passion to help clients become stronger, happier and more confident. Dedicated to providing tailored workouts and expert guidance whether the goal is fat loss, muscle building or overall fitness improvement.",
-    specialities: [
-      "Tailored workout programming",
-      "Fat loss & muscle building",
-      "Bootcamp & group training",
-    ],
-  },
-  {
-    name: "Dana",
-    role: "Personal Trainer",
-    image: "/coaches/dana.webp",
-    bio: "Pro-level Hyrox competitor and strength & performance coach. As a mother of two, Dana specialises in post-pregnancy strength reconstruction and helping clients balance fitness with demanding schedules.",
-    specialities: [
-      "Hyrox competition training",
-      "Strength & performance coaching",
-      "Post-pregnancy fitness",
-      "Fat loss programming",
-    ],
-  },
-];
-
 const memberships = [
   {
     title: "Intro Trial Week",
@@ -191,7 +141,17 @@ const whyRoar = [
 ];
 
 export default async function Home() {
-  const upcomingClasses = await getUpcomingClasses();
+  const [upcomingClasses, coachList] = await Promise.all([
+    getUpcomingClasses(),
+    getCoaches(),
+  ]);
+
+  // Directors/founders lead, otherwise keep the API's order.
+  const coaches = [...coachList].sort((a, b) => {
+    const rank = (t: string | null) =>
+      t?.toLowerCase().includes("director") ? 0 : 1;
+    return rank(a.title) - rank(b.title);
+  });
 
   return (
     <>
@@ -258,7 +218,22 @@ export default async function Home() {
             />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {coaches.map((coach) => (
-                <CoachCard key={coach.name} {...coach} />
+                <CoachCard
+                  key={coach.name}
+                  name={coach.name}
+                  role={coach.title ?? "Coach"}
+                  bio={coach.bio}
+                  image={coach.profile_picture_url}
+                  instagram={coach.instagram}
+                  qualifications={
+                    coach.qualifications
+                      ? coach.qualifications
+                          .split(",")
+                          .map((q) => q.trim())
+                          .filter(Boolean)
+                      : undefined
+                  }
+                />
               ))}
             </div>
           </div>

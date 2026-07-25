@@ -33,6 +33,34 @@ export interface NourishClass {
   paid: boolean;
 }
 
+export interface NourishCoach {
+  first_name: string;
+  last_name: string;
+  name: string;
+  bio: string | null;
+  title: string | null;
+  tags: string | null;
+  qualifications: string | null;
+  instagram: string | null;
+  youtube: string | null;
+  facebook: string | null;
+  profile_picture_url: string | null;
+}
+
+export async function getCoaches(): Promise<NourishCoach[]> {
+  try {
+    const res = await fetch(`${API_BASE}/coaches`, {
+      headers: { Accept: "application/json", Origin: EMBED_ORIGIN },
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return Array.isArray(json.data) ? json.data : [];
+  } catch {
+    return [];
+  }
+}
+
 export async function getUpcomingClasses(): Promise<NourishClass[]> {
   const classes: NourishClass[] = [];
   try {

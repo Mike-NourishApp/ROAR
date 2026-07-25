@@ -1,15 +1,25 @@
 import Image from "next/image";
+import { InstagramIcon } from "@/components/icons";
 
 interface CoachCardProps {
   name: string;
   role: string;
-  bio: string;
-  image?: string;
-  specialities?: string[];
-  achievements?: string[];
+  bio?: string | null;
+  image?: string | null;
+  instagram?: string | null;
+  qualifications?: string[];
 }
 
-export function CoachCard({ name, role, bio, image, specialities, achievements }: CoachCardProps) {
+export function CoachCard({
+  name,
+  role,
+  bio,
+  image,
+  instagram,
+  qualifications,
+}: CoachCardProps) {
+  const showBio = bio && bio.trim().length > 0;
+
   return (
     <div className="rounded-lg border border-white/5 bg-white/[0.02] overflow-hidden transition-all hover:border-white/10 hover:bg-white/[0.04]">
       <div className="aspect-[4/5] relative bg-white/[0.03]">
@@ -35,36 +45,38 @@ export function CoachCard({ name, role, bio, image, specialities, achievements }
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-bold text-white">{name}</h3>
-        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-white/40">
-          {role}
-        </p>
-        <p className="mb-4 text-sm leading-relaxed text-white/50">{bio}</p>
-        {achievements && achievements.length > 0 && (
-          <div className="mb-4">
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
-              Achievements
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="text-lg font-bold text-white">{name}</h3>
+            <p className="text-xs font-medium uppercase tracking-wider text-white/40">
+              {role}
             </p>
-            <ul className="space-y-1.5">
-              {achievements.map((a) => (
-                <li key={a} className="flex items-center gap-2.5 text-sm text-white/60">
-                  <span className="h-px w-3 bg-white/20" />
-                  {a}
-                </li>
-              ))}
-            </ul>
           </div>
+          {instagram && (
+            <a
+              href={instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-roar/40 hover:text-roar"
+            >
+              <InstagramIcon className="h-3.5 w-3.5" />
+              <span className="sr-only">{name} on Instagram</span>
+            </a>
+          )}
+        </div>
+        {showBio && (
+          <p className="mb-4 text-sm leading-relaxed text-white/50">{bio}</p>
         )}
-        {specialities && specialities.length > 0 && (
+        {qualifications && qualifications.length > 0 && (
           <div>
             <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
-              Specialises in
+              Qualifications
             </p>
             <ul className="space-y-1.5">
-              {specialities.map((s) => (
-                <li key={s} className="flex items-center gap-2.5 text-sm text-white/60">
-                  <span className="h-px w-3 bg-white/20" />
-                  {s}
+              {qualifications.map((q) => (
+                <li key={q} className="flex items-center gap-2.5 text-sm text-white/60">
+                  <span className="h-px w-3 shrink-0 bg-white/20" />
+                  {q}
                 </li>
               ))}
             </ul>
