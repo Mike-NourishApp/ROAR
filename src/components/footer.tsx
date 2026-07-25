@@ -21,9 +21,8 @@ const linkColumns = [
     links: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Enquire Now", href: "/#founding" },
-      { label: "Book a Consultation", href: "/#founding" },
-      { label: "Founding Membership", href: "/#founding" },
+      { label: "Enquire Now", href: "/contact" },
+      { label: "Book a Consultation", href: "/contact" },
     ],
   },
   {

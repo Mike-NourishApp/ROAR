@@ -31,7 +31,7 @@ export default function RecoveryPage() {
             </p>
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
-                href="/#founding"
+                href="/contact"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-8 h-12"

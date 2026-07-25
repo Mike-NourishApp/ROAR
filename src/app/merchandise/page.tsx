@@ -85,7 +85,7 @@ export default function MerchandisePage() {
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/#founding"
+                  href="/contact"
                   className={cn(
                     buttonVariants({ size: "lg" }),
                     "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-8 h-12"
@@ -117,7 +117,7 @@ export default function MerchandisePage() {
               Founding members get first access to every release.
             </p>
             <Link
-              href="/#founding"
+              href="/contact"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "border-white/15 text-white/70 hover:bg-white/5 hover:text-white text-xs font-semibold uppercase tracking-wider px-8 h-12"

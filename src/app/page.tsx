@@ -8,7 +8,6 @@ import { ServiceCard } from "@/components/service-card";
 import { ClassCard } from "@/components/class-card";
 import { CoachCard } from "@/components/coach-card";
 import { MembershipCard } from "@/components/membership-card";
-import { FoundingSection } from "@/components/founding-section";
 import { Timetable } from "@/components/timetable";
 import { getUpcomingClasses } from "@/lib/nourish";
 import { CtaSection } from "@/components/cta-section";
@@ -205,9 +204,6 @@ export default async function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-
-        {/* Founding membership */}
-        <FoundingSection />
 
         {/* Services */}
         <section id="services" className="py-24 sm:py-32">

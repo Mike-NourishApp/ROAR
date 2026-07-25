@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/#timetable", label: "Timetable" },
   { href: "/#team", label: "Team" },
   { href: "/#memberships", label: "Memberships" },
-  { href: "/#founding", label: "Founding" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -215,7 +215,7 @@ export default function AboutPage() {
             </div>
             <div className="mt-12 text-center">
               <Link
-                href="/#founding"
+                href="/contact"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-8 h-12"
