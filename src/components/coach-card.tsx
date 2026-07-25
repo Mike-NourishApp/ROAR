@@ -21,7 +21,7 @@ export function CoachCard({
   const showBio = bio && bio.trim().length > 0;
 
   return (
-    <div className="rounded-lg border border-white/5 bg-white/[0.02] overflow-hidden transition-all hover:border-white/10 hover:bg-white/[0.04]">
+    <div className="flex h-full flex-col rounded-lg border border-white/5 bg-white/[0.02] overflow-hidden transition-all hover:border-white/10 hover:bg-white/[0.04]">
       <div className="aspect-square relative bg-white/[0.03]">
         {image ? (
           <Image
