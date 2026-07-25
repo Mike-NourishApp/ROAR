@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Countdown } from "@/components/countdown";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -52,9 +51,6 @@ export function Hero() {
           A performance-focused training space combining elite coaching,
           strength training, Hyrox conditioning and community.
         </p>
-        <div className="mb-12">
-          <Countdown />
-        </div>
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
             href="#timetable"
