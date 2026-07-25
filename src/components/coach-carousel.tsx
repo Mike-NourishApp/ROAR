@@ -64,10 +64,24 @@ export function CoachCarousel({ coaches }: { coaches: Coach[] }) {
         <ChevronRight className="h-5 w-5" />
       </button>
 
+      {/* Edge fades: peeking cards dissolve into the page background */}
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-y-0 left-0 z-[1] w-20 bg-gradient-to-r from-background to-transparent transition-opacity sm:w-28",
+          atStart && "opacity-0"
+        )}
+      />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-y-0 right-0 z-[1] w-20 bg-gradient-to-l from-background to-transparent transition-opacity sm:w-28",
+          atEnd && "opacity-0"
+        )}
+      />
+
       <div
         ref={scrollRef}
         onScroll={updateEdges}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:thin]"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-14 pb-4 scroll-px-14 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-20 sm:scroll-px-20 [&::-webkit-scrollbar]:hidden"
       >
         {coaches.map((coach) => (
           <div
