@@ -216,24 +216,28 @@ export default async function Home() {
               title="Your Coaches"
               description="Experienced coaches dedicated to helping you train smarter and perform better."
             />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [scrollbar-width:thin]">
               {coaches.map((coach) => (
-                <CoachCard
+                <div
                   key={coach.name}
-                  name={coach.name}
-                  role={coach.title ?? "Coach"}
-                  bio={coach.bio}
-                  image={coach.profile_picture_url}
-                  instagram={coach.instagram}
-                  qualifications={
-                    coach.qualifications
-                      ? coach.qualifications
-                          .split(",")
-                          .map((q) => q.trim())
-                          .filter(Boolean)
-                      : undefined
-                  }
-                />
+                  className="w-[260px] shrink-0 snap-start sm:w-[288px]"
+                >
+                  <CoachCard
+                    name={coach.name}
+                    role={coach.title ?? "Coach"}
+                    bio={coach.bio}
+                    image={coach.profile_picture_url}
+                    instagram={coach.instagram}
+                    qualifications={
+                      coach.qualifications
+                        ? coach.qualifications
+                            .split(",")
+                            .map((q) => q.trim())
+                            .filter(Boolean)
+                        : undefined
+                    }
+                  />
+                </div>
               ))}
             </div>
           </div>
