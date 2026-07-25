@@ -6,7 +6,7 @@ import { WhatsAppWidget } from "@/components/whatsapp-widget";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { ClassCard } from "@/components/class-card";
-import { CoachCard } from "@/components/coach-card";
+import { CoachCarousel } from "@/components/coach-carousel";
 import { MembershipCard } from "@/components/membership-card";
 import { Timetable } from "@/components/timetable";
 import { getUpcomingClasses, getCoaches } from "@/lib/nourish";
@@ -216,30 +216,21 @@ export default async function Home() {
               title="Your Coaches"
               description="Experienced coaches dedicated to helping you train smarter and perform better."
             />
-            <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [scrollbar-width:thin]">
-              {coaches.map((coach) => (
-                <div
-                  key={coach.name}
-                  className="w-[260px] shrink-0 snap-start sm:w-[288px]"
-                >
-                  <CoachCard
-                    name={coach.name}
-                    role={coach.title ?? "Coach"}
-                    bio={coach.bio}
-                    image={coach.profile_picture_url}
-                    instagram={coach.instagram}
-                    qualifications={
-                      coach.qualifications
-                        ? coach.qualifications
-                            .split(",")
-                            .map((q) => q.trim())
-                            .filter(Boolean)
-                        : undefined
-                    }
-                  />
-                </div>
-              ))}
-            </div>
+            <CoachCarousel
+              coaches={coaches.map((coach) => ({
+                name: coach.name,
+                role: coach.title ?? "Coach",
+                bio: coach.bio,
+                image: coach.profile_picture_url,
+                instagram: coach.instagram,
+                qualifications: coach.qualifications
+                  ? coach.qualifications
+                      .split(",")
+                      .map((q) => q.trim())
+                      .filter(Boolean)
+                  : undefined,
+              }))}
+            />
           </div>
         </section>
 
