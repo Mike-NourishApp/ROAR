@@ -87,7 +87,7 @@ export function CoachCarousel({ coaches }: { coaches: Coach[] }) {
           <div
             key={coach.name}
             data-coach-card
-            className="w-[260px] shrink-0 snap-start sm:w-[288px]"
+            className="w-[300px] shrink-0 snap-start sm:w-[340px]"
           >
             <CoachCard {...coach} />
           </div>
