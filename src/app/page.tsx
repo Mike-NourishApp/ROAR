@@ -75,31 +75,37 @@ const services = [
 const classes = [
   {
     title: "Roar Zone",
+    image: "/classes/roar-zone.webp",
     description:
       "Our signature class combines the best of everything—barbell complexes, erg training, running, and functional conditioning. Expect a fast-paced, high-energy session designed to build strength, endurance, and resilience. Train hard, push your limits, and experience the atmosphere that makes the Pride stronger together.",
   },
   {
     title: "Barbell Club – Upper Body",
+    image: "/classes/barbell-club-upper.webp",
     description:
       "Build strength, improve technique, and add lean muscle. This upper body strength class focuses on compound barbell lifts, supported by targeted accessory work to develop power, muscle, and long-term progress.",
   },
   {
     title: "Barbell Club – Lower Body",
+    image: "/classes/barbell-club-lower.webp",
     description:
       "Build a stronger lower body through proven strength training. This class focuses on compound lifts, supported by targeted accessory work to develop strength, muscle, stability, and power while improving lifting technique and movement quality.",
   },
   {
     title: "Engine Room",
+    image: "/classes/engine-room.webp",
     description:
       "Build your engine through a combination of ergs and HYROX-inspired functional stations. This class keeps you working at a controlled threshold, helping you develop endurance, efficiency, and the ability to maintain a strong, consistent pace throughout the workout.",
   },
   {
     title: "Hybrid Run",
+    image: "/classes/hybrid-run.webp",
     description:
       "Outdoor running meets HYROX performance training. Alternate between running and functional stations to build endurance, improve compromised running, and develop the resilience to perform under fatigue. Whether you're preparing for your next HYROX race or looking to improve your overall fitness, this class will build the engine to keep moving when it matters most.",
   },
   {
     title: "Youth",
+    image: "/classes/youth.webp",
     description:
       "Build strength, confidence, and athletic performance in a safe, coached environment. Our Youth programme teaches the fundamentals of strength training, including all the major compound lifts, while developing speed, power, coordination, explosive athleticism, and foundations to help you move better, lift well, and perform at your best.",
     comingSoon: true,

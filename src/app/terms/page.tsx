@@ -66,10 +66,10 @@ export default function TermsPage() {
             <ul className="list-disc pl-5 space-y-1.5">
               <li>
                 Members must cancel any class, consultation, group session, personal training
-                session, or appointment at least 24 hours before the scheduled start time.
+                session, or appointment at least 12 hours before the scheduled start time.
               </li>
               <li>
-                Any cancellation made within 24 hours of the scheduled session will be considered
+                Any cancellation made within 12 hours of the scheduled session will be considered
                 attended.
               </li>
               <li>No refund, credit, transfer, extension, or rescheduling will be provided.</li>
@@ -110,7 +110,7 @@ export default function TermsPage() {
           <ul className="list-disc pl-5 space-y-1.5">
             <li>Personal training sessions must be booked and confirmed in advance.</li>
             <li>Sessions are non-transferable and non-refundable once purchased.</li>
-            <li>The 24-hour cancellation policy applies to all personal training sessions.</li>
+            <li>The 12-hour cancellation policy applies to all personal training sessions.</li>
             <li>Unused sessions expire 12 months from the date of purchase.</li>
             <li>ROAR Gym reserves the right to reassign trainers where necessary.</li>
           </ul>

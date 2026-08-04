@@ -80,7 +80,7 @@ export default function GymRulesPage() {
             <li>Arrive on time for all booked classes. Late entry may be refused.</li>
             <li>Follow all instructions given by coaches and trainers.</li>
             <li>
-              The 24-hour cancellation policy applies to all classes and personal training
+              The 12-hour cancellation policy applies to all classes and personal training
               sessions.
             </li>
             <li>Guests are not permitted in classes unless pre-approved by management.</li>
