@@ -17,15 +17,16 @@ export function ClassCard({
     <div className="group relative overflow-hidden rounded-lg border border-white/5 bg-white/[0.02] transition-all hover:border-white/10">
       {image && (
         <>
+          {/* The baseline scale hides the soft edges the blur leaves behind. */}
           <Image
             src={image}
             alt=""
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="scale-105 object-cover blur-[3px] transition-transform duration-500 group-hover:scale-110"
           />
-          {/* 75% black wash keeps the copy readable over the photo */}
-          <div className="absolute inset-0 bg-black/75 transition-colors group-hover:bg-black/70" />
+          {/* 85% black wash keeps the copy readable over the photo */}
+          <div className="absolute inset-0 bg-black/85 transition-colors group-hover:bg-black/80" />
         </>
       )}
       <div className="relative p-6">
