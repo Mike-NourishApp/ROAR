@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Dumbbell, Zap, Timer, CreditCard } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
@@ -12,6 +13,9 @@ import { Timetable } from "@/components/timetable";
 import { getUpcomingClasses, getCoaches } from "@/lib/nourish";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { pricingGroups } from "@/lib/pricing";
 
 const services = [
   {
@@ -98,35 +102,7 @@ const classes = [
     title: "Youth",
     description:
       "Build strength, confidence, and athletic performance in a safe, coached environment. Our Youth programme teaches the fundamentals of strength training, including all the major compound lifts, while developing speed, power, coordination, explosive athleticism, and foundations to help you move better, lift well, and perform at your best.",
-  },
-];
-
-const memberships = [
-  {
-    title: "Intro Trial Week",
-    description:
-      "Experience ROAR with a full week of unlimited access to classes and open gym. The perfect way to see if we are the right fit.",
-  },
-  {
-    title: "Unlimited Classes",
-    description:
-      "Full access to all ROAR group classes including Strength, Conditioning and Hyrox sessions.",
-    featured: true,
-  },
-  {
-    title: "Open Gym",
-    description:
-      "Access to the ROAR training floor during open gym hours. Perfect for experienced lifters with their own programming.",
-  },
-  {
-    title: "Hybrid Membership",
-    description:
-      "Combine unlimited classes with open gym access for the ultimate training flexibility.",
-  },
-  {
-    title: "PT Packages",
-    description:
-      "1:1 or small group personal training packages tailored to your goals with dedicated coaching.",
+    comingSoon: true,
   },
 ];
 
@@ -277,9 +253,28 @@ export default async function Home() {
               description="Flexible options to fit your training style and goals."
             />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {memberships.map((m) => (
-                <MembershipCard key={m.title} {...m} />
+              {pricingGroups.map((group) => (
+                <MembershipCard
+                  key={group.id}
+                  title={group.title}
+                  description={group.description}
+                  from={group.from}
+                  fromNote={group.fromNote}
+                  href={`/pricing#${group.id}`}
+                  featured={group.id === "group-classes"}
+                />
               ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link
+                href="/pricing"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "border-white/15 text-white/70 hover:bg-white/5 hover:text-white text-xs font-semibold uppercase tracking-wider px-8 h-12"
+                )}
+              >
+                See Full Pricing
+              </Link>
             </div>
           </div>
         </section>

@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/#classes", label: "Classes" },
   { href: "/#timetable", label: "Timetable" },
   { href: "/#team", label: "Team" },
-  { href: "/#memberships", label: "Memberships" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];
 

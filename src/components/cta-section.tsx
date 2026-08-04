@@ -23,7 +23,7 @@ export function CtaSection() {
         </p>
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <a
-            href="#timetable"
+            href="/#timetable"
             className={cn(
               buttonVariants({ size: "lg" }),
               "bg-roar text-black hover:bg-roar/90 text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
