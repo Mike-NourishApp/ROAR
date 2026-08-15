@@ -1,8 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { site, whatsappUrl } from "@/lib/site";
+import { whatsappUrl } from "@/lib/site";
 import { MessageCircle, CalendarCheck } from "lucide-react";
-import { InstagramIcon } from "@/components/icons";
 
 export function CtaSection() {
   return (
@@ -45,18 +44,6 @@ export function CtaSection() {
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp Us
-          </a>
-          <a
-            href={site.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "border-white/15 text-white/70 hover:bg-white/5 hover:text-white text-xs font-semibold uppercase tracking-wider px-8 h-12 gap-2"
-            )}
-          >
-            <InstagramIcon className="h-4 w-4" />
-            DM on Instagram
           </a>
         </div>
       </div>
