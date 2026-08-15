@@ -57,7 +57,7 @@ export function CoachCard({
               href={instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-roar/40 hover:text-roar"
+              className="relative mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-roar/40 hover:text-roar"
             >
               <InstagramIcon className="h-3.5 w-3.5" />
               <span className="sr-only">{name} on Instagram</span>
